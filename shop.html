@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: url("groceries.jpg");
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+        .container{
+            position: fixed;
+            left: 150px;
+            top: 100px;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;   
+        }
+        #containerBox{
+            position: fixed;
+            left: 100px;
+            top: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #demo{
+         font-weight: 700;
+         font-size: 20px;
+        }
+        table{
+            position: fixed;
+            margin: 2px;
+            top: 150px;
+            left: 100px;
+            font-weight: 700;
+            font-size: 20px;
+            text-align: center;
+        }
+        table,th,td,tr{
+            border: 2px solid black;
+        }
+        #item,#qnty{
+            width: 300px;
+            border-radius: 15px;
+            outline: none;
+            text-align: center;
+        }
+        #btn{
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="table">
+    <table class="table">
+        <tr>
+            <th>ITEM NUMBER'S</th>
+            <th>ITEM NAME'S</th>
+            <th>STOCK'S</th>
+            <th>ITEM PRICE</th>
+        </tr>
+        <tr>
+            <td>101</td>
+            <td>Milk</td>
+            <td>10</td>
+            <td>42</td>
+        </tr>
+        <tr>
+            <td>102</td>
+            <td>Chese</td>
+            <td>20</td>
+            <td>50</td>
+        </tr>
+        <tr>
+            <td>103</td>
+            <td>Ghee</td>
+            <td>30</td>
+            <td>500</td>
+        </tr>
+        <tr>
+            <td>104</td>
+            <td>Bread</td>
+            <td>40</td>
+            <td>42</td>
+        </tr>
+    </table>
+</div>
+    <div class="container">
+        <span><h1>Enter the Item number</h1></span>
+        <input type="text" id="item"/>
+        <span><h1>Enter the quantity in number</h1></span>
+        <input type="text" id="qnty"/>
+        <button id="btn">Check Stock</button>
+        <div class="containerBox">
+        <div id="demo"></div></div>
+    </div>
+    <script>
+        let item=document.getElementById("item");
+        let qnty=document.getElementById("qnty");
+        let btn=document.getElementById("btn");
+        let itemNo=[101,102,103,104];
+        let itemName=['Milk','Chese','Ghee','Bread'];
+        let price=[42,50,500,40];
+        let stock=[10,20,30,40];
+        btn.onclick=check;
+        function check(){
+            let inputItem=parseInt(item.value);
+            let inputQnty=parseInt(qnty.value);
+            // let itemName1=" ";
+            for(let i=0;i<itemNo.length;i++){
+                
+                if(itemNo[i]==inputItem && inputQnty<=stock[i]){
+                    let qt=inputQnty*price[i];
+                    itemName1 =itemName[i];
+                     console.log(itemName);
+                    document.getElementById("demo").innerHTML=`${itemName1} is in stock Price is ${qt}`;
+                    console.log("abhi");
+                    break;
+                }
+                else if(inputQnty>stock[i]){
+                    itemName1 =itemName[i];
+                    console.log(itemName1);
+                    document.getElementById("demo").innerHTML=`${itemName1} is out Of Stock`;
+                
+                }
+                // console.log(res);
+            }
+            // console.log(a);
+        }
+        
+        // btn.onclick=check;
+        // function check(){
+        //     let itemNo=item.value;
+        //     console.log(itemNo);
+        // }
+    </script>
+</body>
+</html>
